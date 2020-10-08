@@ -7,4 +7,8 @@ public abstract class Alien {
 	public void fliegen() {
 		System.out.println("Ich fliege durch den Weltraum.");
 	}
+
+	public void erdeBesuchen(){
+		System.out.println("Ich besuche die Erde. Die Menschen sind wundervoll.");
+	}
 }

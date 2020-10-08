@@ -7,9 +7,16 @@ public class AlienSimulator {
 		Alien alien = new AlienMars();
 		alien.darstellen();
 		alien.fliegen();
+		alien.erdeBesuchen();
 
 		alien = new AlienMond();
 		alien.darstellen();
 		alien.fliegen();
+		alien.erdeBesuchen();
+
+		alien = new AlienVenus();
+		alien.darstellen();
+		alien.fliegen();
+		alien.erdeBesuchen();
 	}
 }
