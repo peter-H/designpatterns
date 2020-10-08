@@ -4,12 +4,19 @@ public class AlienSimulator {
 	
 	public static void main(String[] args) {
 
-		Alien alien = new AlienMars();
-		alien.darstellen();
-		alien.fliegen();
+		AlienMars alienMars = new AlienMars();
+		alienMars.darstellen();
+		alienMars.fliegen();
+		alienMars.erdeFeindlichBesuchen();
 
-		alien = new AlienMond();
-		alien.darstellen();
-		alien.fliegen();
+		AlienMond alienMond = new AlienMond();
+		alienMond.darstellen();
+		alienMond.fliegen();
+		alienMond.erdeFreundlichBesuchen();
+
+		AlienVenus alienVenus = new AlienVenus();
+		alienVenus.darstellen();
+		alienVenus.fliegen();
+		alienVenus.erdeFreundlichBesuchen();
 	}
 }
