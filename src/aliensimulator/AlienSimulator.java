@@ -1,5 +1,8 @@
 package aliensimulator;
 
+import aliens_3rdparty.AlienFromNY;
+import aliens_3rdparty.NeutralBesuchen;
+
 public class AlienSimulator {
 	
 	public static void main(String[] args) {
@@ -23,5 +26,14 @@ public class AlienSimulator {
 		alienVenus.darstellen();
 		alienVenus.fliegen();
 		alienVenus.erdeBesuchen();
+
+		Alien alienFromNY = new AlienAdapter(new AlienFromNY());
+		alienFromNY.darstellen();
+		alienFromNY.fliegen();
+		System.out.println("Verhalten vom Alien von NY VOR der Änderung seines Verhaltens:");
+		alienFromNY.erdeBesuchen();
+		alienFromNY.setErdeBesuchverhalten(new ErdeNeutralAdapter(new NeutralBesuchen()));
+		System.out.println("Verhalten vom Alien von NY NACH der Änderung seines Verhaltens:");
+		alienFromNY.erdeBesuchen();
 	}
 }
