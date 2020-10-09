@@ -1,4 +1,4 @@
-package pizzeria;
+package pizzeria.pizza;
 
 public class NYStyleClamPizza extends Pizza {
 

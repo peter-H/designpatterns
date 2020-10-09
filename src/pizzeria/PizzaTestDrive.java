@@ -1,5 +1,10 @@
 package pizzeria;
 
+import pizzeria.pizza.Pizza;
+import pizzeria.store.ChicagoPizzaStore;
+import pizzeria.store.NYPizzaStore;
+import pizzeria.store.PizzaStore;
+
 public class PizzaTestDrive {
  
 	public static void main(String[] args) {

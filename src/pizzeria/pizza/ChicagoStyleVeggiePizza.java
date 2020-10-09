@@ -1,4 +1,4 @@
-package pizzeria;
+package pizzeria.pizza;
 
 public class ChicagoStyleVeggiePizza extends Pizza {
 	public ChicagoStyleVeggiePizza() {
@@ -12,7 +12,7 @@ public class ChicagoStyleVeggiePizza extends Pizza {
 		toppings.add("Eggplant");
 	}
  
-	void cut() {
+	public void cut() {
 		System.out.println("Cutting the pizza into square slices");
 	}
 }
