@@ -3,12 +3,16 @@ package pizzeria;
 public class PizzaTestDrive {
  
 	public static void main(String[] args) {
-		PizzaStore store = new PizzaStore();
+		NYPizzaFactory nyFactory = new NYPizzaFactory();
+		NYPizzaStore nyStore = new NYPizzaStore(nyFactory);
 
-		Pizza pizza = store.orderPizza("cheese");
+		Pizza pizza = nyStore.orderPizza("cheese");
 		System.out.println("We ordered a " + pizza.getName() + "\n");
  
-		pizza = store.orderPizza("veggie");
+		ChicagoPizzaFactory chicagoFactory = new ChicagoPizzaFactory();
+		ChicagoPizzaStore chicagoStore = new ChicagoPizzaStore(chicagoFactory);
+		
+		pizza = chicagoStore.orderPizza("veggie");
 		System.out.println("We ordered a " + pizza.getName() + "\n");
 
 	}
