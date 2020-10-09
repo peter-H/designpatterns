@@ -1,8 +1,8 @@
 package pizzeria;
 
-public class SimplePizzaFactory {
+public class StaticSimplePizzaFactory {
 
-	public Pizza createPizza(String type) {
+	public static Pizza createPizza(String type) {
 		Pizza pizza = null;
 
 		if (type.equals("cheese")) {
@@ -16,13 +16,4 @@ public class SimplePizzaFactory {
 		}
 		return pizza;
 	}
-
-	public Pizza createPizza() {
-		return new CheesePizza();
-	}
-	
-	public Pizza createPepperoniPizza() {
-		return new PepperoniPizza();
-	}
 }
-
