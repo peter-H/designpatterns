@@ -12,7 +12,7 @@ public class ChicagoStyleVeggiePizza extends Pizza {
 		toppings.add("Eggplant");
 	}
  
-	public void cut() {
+	void cut() {
 		System.out.println("Cutting the pizza into square slices");
 	}
 }

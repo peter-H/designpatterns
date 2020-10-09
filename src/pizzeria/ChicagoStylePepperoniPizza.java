@@ -13,7 +13,7 @@ public class ChicagoStylePepperoniPizza extends Pizza {
 		toppings.add("Sliced Pepperoni");
 	}
  
-	public void cut() {
+	void cut() {
 		System.out.println("Cutting the pizza into square slices");
 	}
 }

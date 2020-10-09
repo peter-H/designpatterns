@@ -1,22 +1,16 @@
 package pizzeria;
 
-public class ChicagoPizzaStore {
-	ChicagoPizzaFactory factory;
- 
-	public ChicagoPizzaStore(ChicagoPizzaFactory factory) {
-		this.factory = factory;
-	}
- 
-	public Pizza orderPizza(String type) {
-		Pizza pizza;
- 
-		pizza = factory.createPizza(type);
- 
-		pizza.prepare();
-		pizza.bake();
-		//pizza.cut();
-		pizza.box();
+public class ChicagoPizzaStore extends PizzaStore {
 
-		return pizza;
+	Pizza createPizza(String item) {
+        	if (item.equals("cheese")) {
+            		return new ChicagoStyleCheesePizza();
+        	} else if (item.equals("veggie")) {
+        	    	return new ChicagoStyleVeggiePizza();
+        	} else if (item.equals("clam")) {
+        	    	return new ChicagoStyleClamPizza();
+        	} else if (item.equals("pepperoni")) {
+            		return new ChicagoStylePepperoniPizza();
+        	} else return null;
 	}
 }
