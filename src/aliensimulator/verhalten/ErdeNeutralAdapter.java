@@ -1,4 +1,4 @@
-package aliensimulator;
+package aliensimulator.verhalten;
 
 import aliens_3rdparty.NeutralBesuchen;
 

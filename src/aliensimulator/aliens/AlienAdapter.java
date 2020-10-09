@@ -1,6 +1,7 @@
-package aliensimulator;
+package aliensimulator.aliens;
 
 import aliens_3rdparty.AlienFromNY;
+import aliensimulator.verhalten.ErdeZerstoererischAdapter;
 
 public class AlienAdapter extends Alien {
 
@@ -8,7 +9,7 @@ public class AlienAdapter extends Alien {
 
 	public AlienAdapter(AlienFromNY alienNY) {
 		this.alienFromNY = alienNY;
-		erdeBesuchverhalten = new ErdeZerstoererischAdapter();
+		this.setErdeBesuchverhalten(new ErdeZerstoererischAdapter());
 	}
 	
 	@Override

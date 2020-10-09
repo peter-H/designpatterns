@@ -1,10 +1,12 @@
-package aliensimulator;
+package aliensimulator.aliens;
+
+import aliensimulator.verhalten.ErdeBesuchverhalten;
 
 public abstract class Alien {
 	
-	protected ErdeBesuchverhalten erdeBesuchverhalten;
+	private ErdeBesuchverhalten erdeBesuchverhalten;
 
-	abstract void darstellen();
+	public abstract void darstellen();
 
 	public void fliegen() {
 		System.out.println("Ich fliege durch den Weltraum.");

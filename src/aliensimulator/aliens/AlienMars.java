@@ -1,9 +1,11 @@
-package aliensimulator;
+package aliensimulator.aliens;
+
+import aliensimulator.verhalten.ErdeFeindlichBesuchen;
 
 public class AlienMars extends Alien {
 	
 	public AlienMars(){
-		erdeBesuchverhalten = new ErdeFeindlichBesuchen();
+		this.setErdeBesuchverhalten(new ErdeFeindlichBesuchen());
 	}
 
 	public void darstellen() {

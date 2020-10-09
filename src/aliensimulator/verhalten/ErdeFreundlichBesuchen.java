@@ -1,4 +1,4 @@
-package aliensimulator;
+package aliensimulator.verhalten;
 
 public class ErdeFreundlichBesuchen implements ErdeBesuchverhalten {
 	

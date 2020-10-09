@@ -1,9 +1,11 @@
-package aliensimulator;
+package aliensimulator.aliens;
+
+import aliensimulator.verhalten.ErdeFreundlichBesuchen;
 
 public class AlienVenus extends Alien {
 	
 	public AlienVenus(){
-		erdeBesuchverhalten = new ErdeFreundlichBesuchen();
+		this.setErdeBesuchverhalten(new ErdeFreundlichBesuchen());
 	}
 
 	public void darstellen() {

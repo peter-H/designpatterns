@@ -2,6 +2,9 @@ package aliensimulator;
 
 import aliens_3rdparty.AlienFromNY;
 import aliens_3rdparty.NeutralBesuchen;
+import aliensimulator.aliens.*;
+import aliensimulator.verhalten.ErdeFreundlichBesuchen;
+import aliensimulator.verhalten.ErdeNeutralAdapter;
 
 public class AlienSimulator {
 	
