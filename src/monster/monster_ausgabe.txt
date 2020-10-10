@@ -1,0 +1,52 @@
+Ich bin ein Kruemelmonster mit Schreckwert: -5
+Ich erzaehle Witze
+
+Ich bin ein Kobold mit Schreckwert: 0
+Ich mache Smalltalk
+Beobachter meldet: Schreckwert geändert: 2
+Ich bin ein Kobold mit Schreckwert: 2
+Ich besitze: Hexenmaske
+Ich mache den Menschen Angst
+
+Huhuuu. Ich bin ein Poltergeist
+
+Tssssss. Der Sumpfgeist wird Dich holen.
+Ich mache den Menschen Angst
+Beobachter meldet: Schreckwert geändert: -1
+Tssssss. Der Sumpfgeist wird Dich holen.
+Ich besitze: Clownsnase
+Ich erzaehle Witze
+
+Ich bin ein Drache mit Schreckwert: 6
+Ich besitze: Frankensteinschraube
+Ich mache den Menschen Angst
+
+Ich bin ein Kobold mit Schreckwert: 0
+Ich mache Smalltalk
+
+Tssssss. Der Sumpfgeist wird Dich holen.
+Ich mache den Menschen Angst
+
+Ich bin ein Kobold mit Schreckwert: 0
+Eine Höhle
+Gebirgslandschaft
+
+Huhuuu. Ich bin ein Poltergeist
+Ein Schloss
+Ein Sumpfgebiet
+
+Ich bin ein Drache mit Schreckwert: 5
+Ich mache den Menschen Angst
+Aufwachen
+Aufstehen
+Arbeiten
+Ausruhen
+Schlafen
+Einschlafen
+Aufwachen
+Aufstehen
+Kämpfen
+Heilen
+Kämpfen
+Schlafen
+Einschlafen
