@@ -4,17 +4,19 @@ package wetterstation;
 public class VorhersageAnzeige implements Beobachter {
 	private float aktuellerLuftdruck = 29.92f;  
 	private float letzterLuftdruck;
-
+	WetterDaten wetterDaten;
 	
 	public VorhersageAnzeige(WetterDaten wetterDaten) {
+		this.wetterDaten = wetterDaten;
 		wetterDaten.registriereBeobachter(this);
 	}
 	
-	public void aktualisieren(float temp, float feucht, float druck) {
-                letzterLuftdruck = aktuellerLuftdruck;
-		aktuellerLuftdruck = druck;
-
-		anzeigen();
+	public void aktualisieren(Subjekt s) {
+		if (s instanceof WetterDaten) {
+			letzterLuftdruck = aktuellerLuftdruck;
+			aktuellerLuftdruck = ((WetterDaten) s).getLuftdruck();
+			anzeigen();
+		}
 	}
 
 	public void anzeigen() {

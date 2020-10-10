@@ -1,28 +1,34 @@
 package wetterstation;
 
+
 public class StatistikAnzeige implements Beobachter {
 	private float maxTemp = 0.0f;
 	private float minTemp = 200;
 	private float tempSum= 0.0f;
 	private int anzMesswerte;
+	WetterDaten wetterDaten;
 
 	public StatistikAnzeige(WetterDaten wetterDaten) {
+		this.wetterDaten = wetterDaten;
 		wetterDaten.registriereBeobachter(this);
 	}
 	
-	public void aktualisieren(float temp, float feucht, float druck) {
-		tempSum += temp;
-		anzMesswerte++;
+	public void aktualisieren(Subjekt s) {
+		if (s instanceof WetterDaten) {
+			float temp = ((WetterDaten) s).getTemperatur();
+			tempSum += temp;
+			anzMesswerte++;
 
-		if (temp > maxTemp) {
-			maxTemp = temp;
-		}
+			if (temp > maxTemp) {
+				maxTemp = temp;
+			}
  
-		if (temp < minTemp) {
-			minTemp = temp;
-		}
+			if (temp < minTemp) {
+				minTemp = temp;
+			}
 
-		anzeigen();
+			anzeigen();
+		}
 	}
 
 	public void anzeigen() {
