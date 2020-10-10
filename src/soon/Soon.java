@@ -39,12 +39,32 @@ public class Soon {
 	public void stopPlay() {
 		System.out.println("Musik aus");
 	}
+
+	public Zustand getZustand() {
+		return zustand;
+	}
+
+	public void volumeUpButton() {
+		zustand.volumeUpButton();
+	}
 	
+	public void volumeDownButton() {
+		zustand.volumeDownButton();
+	}
+	
+	public void volumeUp() {
+		System.out.println("Lauter");
+	}
+	
+	public void volumeDown() {
+		System.out.println("Leiser");
+	}
+
 	public String toString() {
 		StringBuffer result = new StringBuffer();
 		result.append("\nSoon MP3 Player");
-		result.append("\n---------------");
-		result.append("\nSoon available soon in MyCross-Platform Software Store\n");
+		result.append("\n---------------\n");
 		return result.toString();
 	}
+
 }

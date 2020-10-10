@@ -7,7 +7,24 @@ public class PlayZustand extends Zustand {
 	}
 	
 	public void stopButton() {
-		s.stopPlay();
+		exit();
 		s.setZustand(s.getStopZustand());
+		s.getZustand().entry();
+	}
+
+	public void volumeUpButton() {
+		s.volumeUp();
+	}
+
+	public void volumeDownButton() {
+		s.volumeDown();
+	}
+	
+	public void entry() {
+		s.startPlay();
+	}
+	
+	public void exit() {
+		s.stopPlay();
 	}
 }
