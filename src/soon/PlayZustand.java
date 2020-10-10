@@ -1,15 +1,15 @@
 package soon;
 
-public class PlayZustand extends PowerOn {
+public class PlayZustand extends PowerOnZustand {
 	
-	public PlayZustand(Soon s) {
-		super(s);
+	public PlayZustand(Soon s, PowerOn p) {
+		super(s, p);
 	}
 	
 	public void stopButton() {
 		exit();
-		s.setZustand(s.getStopZustand());
-		s.getZustand().entry();
+		p.setZustand(p.getStopZustand());
+		p.getZustand().entry();
 	}
 
 	public void volumeUpButton() {

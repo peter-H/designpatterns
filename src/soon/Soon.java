@@ -1,35 +1,23 @@
 package soon;
 
 public class Soon {
-	Zustand stopZustand;
-	Zustand playZustand;
+	Zustand powerOnZustand;
 	Zustand powerOffZustand;
-	Zustand powerOnHistory;
 	
 	Zustand zustand;
 	
 	public Soon () {
-		stopZustand = new StopZustand(this);
-		playZustand = new PlayZustand(this);
+		powerOnZustand = new PowerOn(this);
 		powerOffZustand = new PowerOff(this);
 		zustand = powerOffZustand;
-		powerOnHistory = stopZustand;
 	}
 
 	public Zustand getPowerOffZustand() {
 		return powerOffZustand;
 	}
 
-	public void powerButton() {
-		zustand.powerButton();
-	}
-
-	public Zustand getStopZustand() {
-		return stopZustand;
-	}
-
-	public Zustand getPlayZustand() {
-		return playZustand;
+	public Zustand getPowerOnZustand() {
+		return powerOnZustand;
 	}
 
 	public Zustand getZustand() {
@@ -56,6 +44,10 @@ public class Soon {
 		zustand.volumeDownButton();
 	}
 
+	public void powerButton() {
+		zustand.powerButton();
+	}
+
 	public void startPlay() {
 		System.out.println("Musik an");
 	}
@@ -71,13 +63,13 @@ public class Soon {
 	public void volumeDown() {
 		System.out.println("Leiser");
 	}
-	
-	public Zustand getPowerOnHistory() {
-		return powerOnHistory;
+
+	public void powerLED_On() {
+		System.out.println("LED on");
 	}
 	
-	public void setPowerOnHistory(Zustand z) {
-		powerOnHistory = z;
+	public void powerLED_Off() {
+		System.out.println("LED off");
 	}
 
 	public String toString() {
