@@ -1,10 +1,10 @@
 package soon;
 
-public abstract class PowerOnZustand {
+public abstract class PlayerZustand {
 	Soon s;
 	PowerOn p;
 	
-	public PowerOnZustand(Soon s, PowerOn p) {
+	public PlayerZustand(Soon s, PowerOn p) {
 		this.s = s;
 		this.p = p;
 	}

@@ -14,4 +14,5 @@ public abstract class Zustand {
 	public void entry() {};
 	public void exit() {};
 	public void powerButton() {};
+	public void speakerButton() {};
 }

@@ -7,9 +7,9 @@ public class PowerOff extends Zustand {
 	}
 	
 	public void powerButton() {
+		System.out.println("Power Button: Anschalten");
 		exit();
 		s.setZustand(s.getPowerOnZustand());
-		System.out.println("Anschalten");
 		s.getZustand().entry();
 	}
 }

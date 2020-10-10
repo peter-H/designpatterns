@@ -9,8 +9,12 @@ public class SoonTestDrive {
 		
 		player.powerButton();
 		player.playButton();
+		player.speakerButton();
 		player.volumeUpButton();
+		player.powerButton();
+		player.powerButton();
 		player.volumeDownButton();
+		player.speakerButton();
 		player.stopButton();
 		player.powerButton();
 	}

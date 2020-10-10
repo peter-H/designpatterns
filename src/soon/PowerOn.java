@@ -1,64 +1,96 @@
 package soon;
 
 public class PowerOn extends Zustand {
-	PowerOnZustand playZustand;
-	PowerOnZustand stopZustand;
+	PlayerZustand playZustand;
+	PlayerZustand stopZustand;
+	SpeakerZustand stereoZustand;
+	SpeakerZustand surroundZustand;
 
-	PowerOnZustand zustand;
+	PlayerZustand playerZustand;
+	SpeakerZustand speakerZustand;
 	
 	public PowerOn(Soon s) {
 		super(s);
 		stopZustand = new StopZustand(s, this);
 		playZustand = new PlayZustand(s, this);
-		zustand = stopZustand;
+		stereoZustand = new StereoZustand(s,this);
+		surroundZustand = new SurroundZustand(s,this);
+		playerZustand = stopZustand;
+		speakerZustand = stereoZustand;
 	}
 	
-	public PowerOnZustand getStopZustand() {
+	public PlayerZustand getStopZustand() {
 		return stopZustand;
 	}
 
-	public PowerOnZustand getPlayZustand() {
+	public PlayerZustand getPlayZustand() {
 		return playZustand;
 	}
 
-	public PowerOnZustand getZustand() {
-		return zustand;
-	}
-
-	public void setZustand(PowerOnZustand zustand) {
-		this.zustand = zustand;
+	public SpeakerZustand getStereoZustand() {
+		return stereoZustand;
 	}
 	
+	public SpeakerZustand getSurroundZustand() {
+		return surroundZustand;
+	}
+	
+	public PlayerZustand getPlayerZustand() {
+		return playerZustand;
+	}
+
+	public void setPlayerZustand(PlayerZustand zustand) {
+		this.playerZustand = zustand;
+	}
+	
+	public SpeakerZustand getSpeakerZustand() {
+		return speakerZustand;
+	}
+
+	public void setSpeakerZustand(SpeakerZustand zustand) {
+		this.speakerZustand = zustand;
+	}
+
 	public void playButton() {
-		zustand.playButton();
+		System.out.println("Play Button");
+		playerZustand.playButton();
 	}
 	
 	public void stopButton() {
-		zustand.stopButton();
+		System.out.println("Stop Button"); 
+		playerZustand.stopButton();
 	}
 	
 	public void volumeUpButton() {
-		zustand.volumeUpButton();
+		System.out.println("Volume Up Button"); 
+		playerZustand.volumeUpButton();
 	}
 	
 	public void volumeDownButton() {
-		zustand.volumeDownButton();
+		System.out.println("Volume Down Button"); 
+		playerZustand.volumeDownButton();
 	}
 
 	public void powerButton() {
+		System.out.println("Power Button: Ausschalten");
 		exit();
 		s.setZustand(s.getPowerOffZustand());
-		System.out.println("Ausschalten");
 		s.getZustand().entry();
 	}
 	
+	public void speakerButton() {
+		System.out.println("Speaker Button"); 
+		speakerZustand.speakerButton();
+	}
+	
+	
 	public void entry() {
 		s.powerLED_On();
-		zustand.entry();
+		playerZustand.entry();
 	}
 	
 	public void exit() {
 		s.powerLED_Off();
-		zustand.exit();
+		playerZustand.exit();
 	}
 }
