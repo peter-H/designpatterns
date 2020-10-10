@@ -13,22 +13,20 @@ public class StatistikAnzeige implements Beobachter {
 		wetterDaten.registriereBeobachter(this);
 	}
 	
-	public void aktualisieren(Subjekt s) {
-		if (s instanceof WetterDaten) {
-			float temp = ((WetterDaten) s).getTemperatur();
-			tempSum += temp;
-			anzMesswerte++;
+	public void aktualisieren() {
+		float temp = wetterDaten.getTemperatur();
+		tempSum += temp;
+		anzMesswerte++;
 
-			if (temp > maxTemp) {
-				maxTemp = temp;
-			}
- 
-			if (temp < minTemp) {
-				minTemp = temp;
-			}
-
-			anzeigen();
+		if (temp > maxTemp) {
+			maxTemp = temp;
 		}
+ 
+		if (temp < minTemp) {
+			minTemp = temp;
+		}
+
+		anzeigen();
 	}
 
 	public void anzeigen() {

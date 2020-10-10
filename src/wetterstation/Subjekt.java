@@ -19,7 +19,7 @@ public abstract class Subjekt {
 	public void benachrichtigeBeobachter() {
 		for (int i = 0; i < beobachter.size(); i++) {
 			Beobachter observer = (Beobachter)beobachter.get(i);
-			observer.aktualisieren(this);
+			observer.aktualisieren();
 		}
 	}
 

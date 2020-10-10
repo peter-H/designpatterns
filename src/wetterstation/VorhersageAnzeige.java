@@ -11,12 +11,10 @@ public class VorhersageAnzeige implements Beobachter {
 		wetterDaten.registriereBeobachter(this);
 	}
 	
-	public void aktualisieren(Subjekt s) {
-		if (s instanceof WetterDaten) {
-			letzterLuftdruck = aktuellerLuftdruck;
-			aktuellerLuftdruck = ((WetterDaten) s).getLuftdruck();
-			anzeigen();
-		}
+	public void aktualisieren() {
+		letzterLuftdruck = aktuellerLuftdruck;
+		aktuellerLuftdruck = wetterDaten.getLuftdruck();
+		anzeigen();
 	}
 
 	public void anzeigen() {

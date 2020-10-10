@@ -10,12 +10,10 @@ public class AktuelleBedingungenAnzeige implements Beobachter {
 		wetterDaten.registriereBeobachter(this);
 	}
 	
-	public void aktualisieren(Subjekt s) {
-		if (s instanceof WetterDaten) {
-			this.temperatur = ((WetterDaten) s).getTemperatur();
-			this.feuchtigkeit = ((WetterDaten) s).getFeuchtigkeit();
-			anzeigen();
-		}
+	public void aktualisieren() {
+		this.temperatur = wetterDaten.getTemperatur();
+		this.feuchtigkeit = wetterDaten.getFeuchtigkeit();
+		anzeigen();
 	}
 	
 	public void anzeigen() {
