@@ -1,26 +1,29 @@
 package wetterstation;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-public class VorhersageAnzeige implements Observer {
+public class VorhersageAnzeige implements PropertyChangeListener {
 	private float aktuellerLuftdruck = 29.92f;  
 	private float letzterLuftdruck;
 	WetterDaten wetterDaten;
 	
 	public VorhersageAnzeige(WetterDaten wetterDaten) {
 		this.wetterDaten = wetterDaten;
-		wetterDaten.addPropertyListener(this);
+		wetterDaten.addPropertyChangeListener(this);
 	}
 	
-	public void update(Observable o, Object arg) {
-		if (o instanceof EigenschaftenSubjekt) {
-			WetterDaten daten = (WetterDaten) arg;
-			letzterLuftdruck = aktuellerLuftdruck;
-			aktuellerLuftdruck = daten.getLuftdruck();
-			anzeigen();
+	public void propertyChange(PropertyChangeEvent e) {
+		switch (e.getPropertyName()) {
+			case "Luftdruck": 
+	            letzterLuftdruck = aktuellerLuftdruck;
+				aktuellerLuftdruck = (float)e.getNewValue();
+				anzeigen();
+				break;
+			default:
+				break;
 		}
-	}
+ 	}
 
 	public void anzeigen() {
 		System.out.print("Vorhersage: ");

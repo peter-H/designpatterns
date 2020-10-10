@@ -1,28 +1,41 @@
 package wetterstation;
 
-import java.util.Observer;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 
 public class WetterDaten extends SensorDaten {
 	private float temperatur;
 	private float feuchtigkeit;
 	private float luftdruck;
-	private EigenschaftenSubjekt subjekt;
+	private float old_temperatur;
+	private float old_feuchtigkeit;
+	private float old_luftdruck;
+	private PropertyChangeSupport changes;
 	
 	public WetterDaten() {
-		subjekt = new EigenschaftenSubjekt();
+		changes = new PropertyChangeSupport(this);
 	}
 
-	public void addPropertyListener(Observer o) {
-		subjekt.addObserver(o);
+	public void addPropertyChangeListener(PropertyChangeListener l) {
+		changes.addPropertyChangeListener(l);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener l) {
+		changes.removePropertyChangeListener(l);
 	}
 	
 	public void messwerteGeaendert() {
 		System.out.println(this.toString());
-		subjekt.firePropertyChange(this);
+		changes.firePropertyChange("Temperatur", old_temperatur, temperatur);
+		changes.firePropertyChange("Feuchtigkeit", old_feuchtigkeit, feuchtigkeit);
+		changes.firePropertyChange("Luftdruck", old_luftdruck, luftdruck);
 	}
 	
 	public void setMesswerte(float temp, float feucht, float druck) {
+		old_temperatur = this.temperatur;
+		old_feuchtigkeit = this.feuchtigkeit;
+		old_luftdruck = this.luftdruck;
 		this.temperatur = temp;
 		this.feuchtigkeit = feucht;
 		this.luftdruck = druck;
