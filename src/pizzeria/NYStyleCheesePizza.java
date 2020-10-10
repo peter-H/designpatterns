@@ -9,4 +9,9 @@ public class NYStyleCheesePizza extends Pizza {
  
 		toppings.add("Grated Reggiano Cheese");
 	}
+
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("cheese");
+	}
 }

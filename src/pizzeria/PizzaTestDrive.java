@@ -3,6 +3,15 @@ package pizzeria;
 public class PizzaTestDrive {
  
 	public static void main(String[] args) {
+		try {
+			Class.forName("pizzeria.ChicagoStyleCheesePizza");
+			Class.forName("pizzeria.ChicagoStyleClamPizza");
+			Class.forName("pizzeria.ChicagoStylePepperoniPizza");
+			Class.forName("pizzeria.ChicagoStyleVeggiePizza");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		PizzaStore nyStore = new NYPizzaStore();
 		PizzaStore chicagoStore = new ChicagoPizzaStore();
  

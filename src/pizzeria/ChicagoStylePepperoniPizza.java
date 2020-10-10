@@ -1,6 +1,11 @@
 package pizzeria;
 
 public class ChicagoStylePepperoniPizza extends Pizza {
+
+	static {
+		ChicagoPizzaRegistry.register(new ChicagoStylePepperoniPizza());
+	}
+
 	public ChicagoStylePepperoniPizza() {
 		name = "Chicago Style Pepperoni Pizza";
 		dough = "Extra Thick Crust Dough";
@@ -15,5 +20,10 @@ public class ChicagoStylePepperoniPizza extends Pizza {
  
 	void cut() {
 		System.out.println("Cutting the pizza into square slices");
+	}
+
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("pepperoni");
 	}
 }

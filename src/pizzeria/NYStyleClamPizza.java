@@ -10,4 +10,8 @@ public class NYStyleClamPizza extends Pizza {
 		toppings.add("Grated Reggiano Cheese");
 		toppings.add("Fresh Clams from Long Island Sound");
 	}
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("clam");
+	}
 }

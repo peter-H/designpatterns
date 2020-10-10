@@ -7,7 +7,9 @@ public abstract class Pizza {
 	String dough;
 	String sauce;
 	ArrayList<String> toppings = new ArrayList<String>();
- 
+
+	public abstract Boolean canHandle(String type);
+
 	void prepare() {
 		System.out.println("Preparing " + name);
 		System.out.println("Tossing dough...");

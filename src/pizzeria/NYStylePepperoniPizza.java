@@ -14,4 +14,10 @@ public class NYStylePepperoniPizza extends Pizza {
 		toppings.add("Mushrooms");
 		toppings.add("Red Pepper");
 	}
+
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("pepperoni");
+	}
+
 }

@@ -1,6 +1,10 @@
 package pizzeria;
 
 public class ChicagoStyleClamPizza extends Pizza {
+	static {
+		ChicagoPizzaRegistry.register(new ChicagoStyleClamPizza());
+	}
+
 	public ChicagoStyleClamPizza() {
 		name = "Chicago Style Clam Pizza";
 		dough = "Extra Thick Crust Dough";
@@ -12,5 +16,10 @@ public class ChicagoStyleClamPizza extends Pizza {
  
 	void cut() {
 		System.out.println("Cutting the pizza into square slices");
+	}
+
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("clam");
 	}
 }
