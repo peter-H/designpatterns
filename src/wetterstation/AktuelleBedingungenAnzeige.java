@@ -1,6 +1,6 @@
 package wetterstation;
 	
-public class AktuelleBedingungenAnzeige {
+public class AktuelleBedingungenAnzeige implements Beobachter {
 	private float temperatur;
 	private float feuchtigkeit;
 	
