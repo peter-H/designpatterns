@@ -1,45 +1,48 @@
 package kaugummiautomat;
 
+import java.util.Random;
+
 public class KaugummiAutomat {
  
-	final static int AUSVERKAUFT = 0;
-	final static int KEINE_MUENZE = 1;
-	final static int HAT_MUENZE = 2;
-	final static int VERKAUFT = 3;
- 
-	int zustand = AUSVERKAUFT;
+	StateEnum zustand = StateEnum.AUSVERKAUFT;
 	int anzahl = 0;
+	Random randomGewinn = new Random(System.currentTimeMillis());
   
 	public KaugummiAutomat(int anzahl) {
 		this.anzahl = anzahl;
 		if (anzahl > 0) {
-			zustand = KEINE_MUENZE;
+			zustand = StateEnum.KEINE_MUENZE;
 		}
 	}
   
 	public void muenzeEinwerfen() {
-		if (zustand == HAT_MUENZE) {
+		if (zustand == StateEnum.HAT_MUENZE) {
 			System.out.println("Sie können keine weitere Münze einwerfen");
-		} else if (zustand == KEINE_MUENZE) {
-			zustand = HAT_MUENZE;
+		} else if (zustand == StateEnum.KEINE_MUENZE) {
+			zustand = StateEnum.HAT_MUENZE;
 			System.out.println("Sie haben eine Münze eingeworfen");
-		} else if (zustand == AUSVERKAUFT) {
+		} else if (zustand == StateEnum.AUSVERKAUFT) {
 			System.out.println("Sie können keine Münze einwerfen, Automat ist ausverkauft");
-		} else if (zustand == VERKAUFT) {
+		} else if (zustand == StateEnum.VERKAUFT) {
         	System.out.println("Bitte warten Sie, Sie erhalten eine Kugel");
+		} else if (zustand == StateEnum.WINNER) {
+			System.out.println("Bitte warten Sie, Sie erhalten eine Gratiskugel");
 		}
+		
 	}
 
 	public void muenzeAuswerfen() {
-		if (zustand == HAT_MUENZE) {
+		if (zustand == StateEnum.HAT_MUENZE) {
 			System.out.println("Münze wird zurückgegeben");
-			zustand = KEINE_MUENZE;
-		} else if (zustand == KEINE_MUENZE) {
+			zustand = StateEnum.KEINE_MUENZE;
+		} else if (zustand == StateEnum.KEINE_MUENZE) {
 			System.out.println("Sie haben keine Münze eingeworfen");
-		} else if (zustand == VERKAUFT) {
+		} else if (zustand == StateEnum.VERKAUFT) {
 			System.out.println("Zu spät, leider haben Sie den Griff schon gedreht");
-		} else if (zustand == AUSVERKAUFT) {
+		} else if (zustand == StateEnum.AUSVERKAUFT) {
         	System.out.println("Auswurf nicht möglich, Sie haben keine Münze eingeworfen");
+		} else if (zustand == StateEnum.WINNER) {
+			System.out.println("Zu spät, leider haben Sie den Griff schon gedreht");
 		}
 	}
  
@@ -47,41 +50,59 @@ public class KaugummiAutomat {
  
  
 	public void griffDrehen() {
-		if (zustand == VERKAUFT) {
+		if (zustand == StateEnum.VERKAUFT) {
 			System.out.println("Auch wenn Sie zweimal drehen, bekommen Sie keine zweite Kugel!");
-		} else if (zustand == KEINE_MUENZE) {
+		} else if (zustand == StateEnum.KEINE_MUENZE) {
 			System.out.println("Sie haben gedreht, aber es ist keine Münze da");
-		} else if (zustand == AUSVERKAUFT) {
+		} else if (zustand == StateEnum.AUSVERKAUFT) {
 			System.out.println("Sie haben gedreht, aber es sind keine Kugeln da");
-		} else if (zustand == HAT_MUENZE) {
+		} else if (zustand == StateEnum.HAT_MUENZE) {
 			System.out.println("Sie haben den Griff gedreht ...");
-			zustand = VERKAUFT;
+			int gewinn = randomGewinn.nextInt(3);
+			if ((gewinn == 0) && (this.anzahl > 1)) {
+				zustand = StateEnum.WINNER;
+			} else {
+				zustand = StateEnum.VERKAUFT;
+			}
 			kugelAusgeben();
+		} else if (zustand == StateEnum.WINNER) {
+			System.out.println("Auch wenn Sie zweimal drehen, bekommen Sie keine zweite Kugel!");
 		}
 	}
  
 	public void kugelAusgeben() {
-		if (zustand == VERKAUFT) {
+		if (zustand == StateEnum.VERKAUFT) {
 			System.out.println("Eine Kugel rollt aus dem Ausgabeschacht");
 			anzahl = anzahl - 1;
 			if (anzahl == 0) {
 				System.out.println("Hoppla, keine Kugeln da!");
-				zustand = AUSVERKAUFT;
+				zustand = StateEnum.AUSVERKAUFT;
 			} else {
-				zustand = KEINE_MUENZE;
+				zustand = StateEnum.KEINE_MUENZE;
 			}
-		} else if (zustand == KEINE_MUENZE) {
+		} else if (zustand == StateEnum.KEINE_MUENZE) {
 			System.out.println("Sie müssen zuerst bezahlen");
-		} else if (zustand == AUSVERKAUFT) {
+		} else if (zustand == StateEnum.AUSVERKAUFT) {
 			System.out.println("Es wird keine Kugel ausgegeben");
-		} else if (zustand == HAT_MUENZE) {
+		} else if (zustand == StateEnum.HAT_MUENZE) {
 			System.out.println("Es wird keine Kugel ausgegeben");
+		} else if (zustand == StateEnum.WINNER) {
+			System.out.println("\n GEWINN");
+			System.out.println("Eine Kugel rollt aus dem Ausgabeschacht");
+			System.out.println("Eine kostenlose Kugel rollt aus dem Ausgabeschacht");
+			anzahl = anzahl - 1;
+			if (anzahl == 0) {
+				System.out.println("Hoppla, keine Kugeln da!");
+				zustand = StateEnum.AUSVERKAUFT;
+			} else {
+				zustand = StateEnum.KEINE_MUENZE;
+			}
 		}
 	}
  
 	public void auffuellen(int anzahl) {
 		this.anzahl = anzahl;
-		zustand = KEINE_MUENZE;
+		zustand = StateEnum.KEINE_MUENZE;
 	}
 
 	public String toString() {
@@ -93,15 +114,18 @@ public class KaugummiAutomat {
 			result.append("n");
 		}
 		result.append("\nAutomat ");
-		if (zustand == AUSVERKAUFT) {
+		if (zustand == StateEnum.AUSVERKAUFT) {
 			result.append("ausverkauft");
-		} else if (zustand == KEINE_MUENZE) {
+		} else if (zustand == StateEnum.KEINE_MUENZE) {
 			result.append("bereit für Münzeinwurf");
-		} else if (zustand == HAT_MUENZE) {
+		} else if (zustand == StateEnum.HAT_MUENZE) {
 			result.append("bereit für Drehen des Griffs");
-		} else if (zustand == VERKAUFT) {
+		} else if (zustand == StateEnum.VERKAUFT) {
 			result.append("gibt Kugel aus");
+		} else if (zustand == StateEnum.WINNER) {
+			result.append("Gewinn");
 		}
+		
 		result.append("\n");
 		return result.toString();
 	}
