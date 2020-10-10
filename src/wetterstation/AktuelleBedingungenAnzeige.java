@@ -1,19 +1,24 @@
 package wetterstation;
 
-public class AktuelleBedingungenAnzeige implements Beobachter {
+import java.util.Observable;
+import java.util.Observer;
+
+public class AktuelleBedingungenAnzeige implements Observer {
 	private float temperatur;
 	private float feuchtigkeit;
 	WetterDaten wetterDaten;
 	
 	public AktuelleBedingungenAnzeige(WetterDaten wetterDaten) {
 		this.wetterDaten = wetterDaten;
-		wetterDaten.registriereBeobachter(this);
+		wetterDaten.addObserver(this);
 	}
 	
-	public void aktualisieren() {
-		this.temperatur = wetterDaten.getTemperatur();
-		this.feuchtigkeit = wetterDaten.getFeuchtigkeit();
-		anzeigen();
+	public void update(Observable o, Object arg) {
+		if (o instanceof WetterDaten) {
+			this.temperatur = ((WetterDaten) o).getTemperatur();
+			this.feuchtigkeit = ((WetterDaten) o).getFeuchtigkeit();
+			anzeigen();
+		}
 	}
 	
 	public void anzeigen() {

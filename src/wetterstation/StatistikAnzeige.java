@@ -1,7 +1,9 @@
 package wetterstation;
 
+import java.util.Observable;
+import java.util.Observer;
 
-public class StatistikAnzeige implements Beobachter {
+public class StatistikAnzeige implements Observer {
 	private float maxTemp = 0.0f;
 	private float minTemp = 200;
 	private float tempSum= 0.0f;
@@ -10,23 +12,25 @@ public class StatistikAnzeige implements Beobachter {
 
 	public StatistikAnzeige(WetterDaten wetterDaten) {
 		this.wetterDaten = wetterDaten;
-		wetterDaten.registriereBeobachter(this);
+		wetterDaten.addObserver(this);
 	}
 	
-	public void aktualisieren() {
-		float temp = wetterDaten.getTemperatur();
-		tempSum += temp;
-		anzMesswerte++;
+	public void update(Observable o, Object arg) {
+		if (o instanceof WetterDaten) {
+			float temp = ((WetterDaten) o).getTemperatur();
+			tempSum += temp;
+			anzMesswerte++;
 
-		if (temp > maxTemp) {
-			maxTemp = temp;
-		}
+			if (temp > maxTemp) {
+				maxTemp = temp;
+			}
  
-		if (temp < minTemp) {
-			minTemp = temp;
-		}
+			if (temp < minTemp) {
+				minTemp = temp;
+			}
 
-		anzeigen();
+			anzeigen();
+		}
 	}
 
 	public void anzeigen() {
