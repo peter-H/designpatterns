@@ -1,12 +1,16 @@
 package wetterstation;
 
-public class StatistikAnzeige {
+public class StatistikAnzeige implements Beobachter {
 	private float maxTemp = 0.0f;
 	private float minTemp = 200;
 	private float tempSum= 0.0f;
 	private int anzMesswerte;
 
-	public void neueWerte(float temp, float feucht, float druck) {
+	public StatistikAnzeige(WetterDaten wetterDaten) {
+		wetterDaten.registriereBeobachter(this);
+	}
+	
+	public void aktualisieren(float temp, float feucht, float druck) {
 		tempSum += temp;
 		anzMesswerte++;
 

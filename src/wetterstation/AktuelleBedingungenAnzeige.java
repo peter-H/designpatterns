@@ -1,8 +1,12 @@
 package wetterstation;
 	
-public class AktuelleBedingungenAnzeige {
+public class AktuelleBedingungenAnzeige implements Beobachter {
 	private float temperatur;
 	private float feuchtigkeit;
+	
+	public AktuelleBedingungenAnzeige(WetterDaten wetterDaten) {
+		wetterDaten.registriereBeobachter(this);
+	}
 	
 	public void aktualisieren(float temp, float feucht, float druck) {
 		this.temperatur = temp;

@@ -1,13 +1,17 @@
 package wetterstation;
 
 
-public class VorhersageAnzeige {
+public class VorhersageAnzeige implements Beobachter {
 	private float aktuellerLuftdruck = 29.92f;  
 	private float letzterLuftdruck;
 
 	
-	public void aktuelleWerte(float temp, float feucht, float druck) {
-        letzterLuftdruck = aktuellerLuftdruck;
+	public VorhersageAnzeige(WetterDaten wetterDaten) {
+		wetterDaten.registriereBeobachter(this);
+	}
+	
+	public void aktualisieren(float temp, float feucht, float druck) {
+                letzterLuftdruck = aktuellerLuftdruck;
 		aktuellerLuftdruck = druck;
 
 		anzeigen();
