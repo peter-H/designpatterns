@@ -7,10 +7,12 @@ public class SoonTestDrive {
 		Soon player = new Soon();
 		System.out.println(player);
 		
+		player.powerButton();
 		player.playButton();
 		player.volumeUpButton();
-		player.stopButton();
 		player.volumeDownButton();
+		player.stopButton();
+		player.powerButton();
 	}
 
 }

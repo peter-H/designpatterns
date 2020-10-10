@@ -1,6 +1,6 @@
 package soon;
 
-public class StopZustand extends Zustand {
+public class StopZustand extends PowerOn {
 	
 	public StopZustand(Soon s) {
 		super(s);

@@ -3,13 +3,23 @@ package soon;
 public class Soon {
 	Zustand stopZustand;
 	Zustand playZustand;
+	Zustand powerOffZustand;
 	
 	Zustand zustand;
 	
 	public Soon () {
 		stopZustand = new StopZustand(this);
 		playZustand = new PlayZustand(this);
-		zustand = stopZustand;
+		powerOffZustand = new PowerOff(this);
+		zustand = powerOffZustand;
+	}
+
+	public Zustand getPowerOffZustand() {
+		return powerOffZustand;
+	}
+
+	public void powerButton() {
+		zustand.powerButton();
 	}
 
 	public Zustand getStopZustand() {
@@ -18,6 +28,10 @@ public class Soon {
 
 	public Zustand getPlayZustand() {
 		return playZustand;
+	}
+
+	public Zustand getZustand() {
+		return zustand;
 	}
 
 	public void setZustand(Zustand zustand) {
@@ -32,6 +46,14 @@ public class Soon {
 		zustand.stopButton();
 	}
 	
+	public void volumeUpButton() {
+		zustand.volumeUpButton();
+	}
+	
+	public void volumeDownButton() {
+		zustand.volumeDownButton();
+	}
+
 	public void startPlay() {
 		System.out.println("Musik an");
 	}
@@ -40,18 +62,6 @@ public class Soon {
 		System.out.println("Musik aus");
 	}
 
-	public Zustand getZustand() {
-		return zustand;
-	}
-
-	public void volumeUpButton() {
-		zustand.volumeUpButton();
-	}
-	
-	public void volumeDownButton() {
-		zustand.volumeDownButton();
-	}
-	
 	public void volumeUp() {
 		System.out.println("Lauter");
 	}

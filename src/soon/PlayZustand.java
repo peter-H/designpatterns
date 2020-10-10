@@ -1,6 +1,6 @@
 package soon;
 
-public class PlayZustand extends Zustand {
+public class PlayZustand extends PowerOn {
 	
 	public PlayZustand(Soon s) {
 		super(s);
