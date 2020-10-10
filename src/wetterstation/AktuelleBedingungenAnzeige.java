@@ -3,6 +3,7 @@ package wetterstation;
 import java.util.Observable;
 import java.util.Observer;
 
+
 public class AktuelleBedingungenAnzeige implements Observer {
 	private float temperatur;
 	private float feuchtigkeit;
@@ -10,13 +11,14 @@ public class AktuelleBedingungenAnzeige implements Observer {
 	
 	public AktuelleBedingungenAnzeige(WetterDaten wetterDaten) {
 		this.wetterDaten = wetterDaten;
-		wetterDaten.addObserver(this);
+		wetterDaten.addPropertyListener(this);
 	}
 	
 	public void update(Observable o, Object arg) {
-		if (o instanceof WetterDaten) {
-			this.temperatur = ((WetterDaten) o).getTemperatur();
-			this.feuchtigkeit = ((WetterDaten) o).getFeuchtigkeit();
+		if (o instanceof EigenschaftenSubjekt) {
+			WetterDaten daten = (WetterDaten) arg;
+			this.temperatur = daten.getTemperatur();
+			this.feuchtigkeit = daten.getFeuchtigkeit();
 			anzeigen();
 		}
 	}

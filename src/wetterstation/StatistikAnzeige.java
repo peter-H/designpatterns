@@ -12,12 +12,13 @@ public class StatistikAnzeige implements Observer {
 
 	public StatistikAnzeige(WetterDaten wetterDaten) {
 		this.wetterDaten = wetterDaten;
-		wetterDaten.addObserver(this);
+		wetterDaten.addPropertyListener(this);
 	}
 	
 	public void update(Observable o, Object arg) {
-		if (o instanceof WetterDaten) {
-			float temp = ((WetterDaten) o).getTemperatur();
+		if (o instanceof EigenschaftenSubjekt) {
+			WetterDaten daten = (WetterDaten) arg;
+			float temp = daten.getTemperatur();
 			tempSum += temp;
 			anzMesswerte++;
 

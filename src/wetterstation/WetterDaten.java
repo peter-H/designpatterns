@@ -1,16 +1,25 @@
 package wetterstation;
 
-import java.util.Observable;
+import java.util.Observer;
 
-public class WetterDaten extends Observable {
+
+public class WetterDaten extends SensorDaten {
 	private float temperatur;
 	private float feuchtigkeit;
 	private float luftdruck;
+	private EigenschaftenSubjekt subjekt;
+	
+	public WetterDaten() {
+		subjekt = new EigenschaftenSubjekt();
+	}
+
+	public void addPropertyListener(Observer o) {
+		subjekt.addObserver(o);
+	}
 	
 	public void messwerteGeaendert() {
 		System.out.println(this.toString());
-		setChanged();
-		notifyObservers();
+		subjekt.firePropertyChange(this);
 	}
 	
 	public void setMesswerte(float temp, float feucht, float druck) {

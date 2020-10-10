@@ -10,13 +10,14 @@ public class VorhersageAnzeige implements Observer {
 	
 	public VorhersageAnzeige(WetterDaten wetterDaten) {
 		this.wetterDaten = wetterDaten;
-		wetterDaten.addObserver(this);
+		wetterDaten.addPropertyListener(this);
 	}
 	
 	public void update(Observable o, Object arg) {
-		if (o instanceof WetterDaten) {
+		if (o instanceof EigenschaftenSubjekt) {
+			WetterDaten daten = (WetterDaten) arg;
 			letzterLuftdruck = aktuellerLuftdruck;
-			aktuellerLuftdruck = ((WetterDaten) o).getLuftdruck();
+			aktuellerLuftdruck = daten.getLuftdruck();
 			anzeigen();
 		}
 	}
