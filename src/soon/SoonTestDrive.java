@@ -10,6 +10,8 @@ public class SoonTestDrive {
 		player.powerButton();
 		player.playButton();
 		player.volumeUpButton();
+		player.powerButton();
+		player.powerButton();
 		player.volumeDownButton();
 		player.stopButton();
 		player.powerButton();

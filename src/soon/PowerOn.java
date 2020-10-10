@@ -7,6 +7,8 @@ public abstract class PowerOn extends Zustand {
 	}
 	
 	public void powerButton() {
+		exit();
+		s.setPowerOnHistory(s.getZustand());
 		s.setZustand(s.getPowerOffZustand());
 		System.out.println("Ausschalten");
 	}

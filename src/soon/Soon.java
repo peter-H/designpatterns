@@ -4,6 +4,7 @@ public class Soon {
 	Zustand stopZustand;
 	Zustand playZustand;
 	Zustand powerOffZustand;
+	Zustand powerOnHistory;
 	
 	Zustand zustand;
 	
@@ -12,6 +13,7 @@ public class Soon {
 		playZustand = new PlayZustand(this);
 		powerOffZustand = new PowerOff(this);
 		zustand = powerOffZustand;
+		powerOnHistory = stopZustand;
 	}
 
 	public Zustand getPowerOffZustand() {
@@ -68,6 +70,14 @@ public class Soon {
 	
 	public void volumeDown() {
 		System.out.println("Leiser");
+	}
+	
+	public Zustand getPowerOnHistory() {
+		return powerOnHistory;
+	}
+	
+	public void setPowerOnHistory(Zustand z) {
+		powerOnHistory = z;
 	}
 
 	public String toString() {
