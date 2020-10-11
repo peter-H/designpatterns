@@ -125,6 +125,16 @@ public class TestDrive {
 		gebaeude.darstellen();
 		gelaende.darstellen();
 		System.out.println();
+
+		Fassade f = new Fassade();
+		f.initGame(SpielTyp.MONSTERWELT);
+		f.spielzugDurchfuehren();
+		f.hexeKommtEreignis();
+		f.hexeGehtEreignis();
+		f.erstelleMonster(MonsterTyp.DRACHE);
+		f.spielzugDurchfuehren();
+	}
+
 */
 
 	}
