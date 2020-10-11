@@ -1,13 +1,19 @@
 package aliensimulator.ufos;
 
 import aliensimulator.ufos.komponenten.KomponentenFabrik;
+import aliensimulator.ufos.komponenten.PredatorKomponenten;
 import aliensimulator.ufos.komponenten.PredatorKomponentenFabrik;
 
+import javax.inject.Inject;
+
 public class PredatorUfoFactory implements UfoFactory {
+
+    @Inject
+    private @PredatorKomponenten KomponentenFabrik komponentenFabrik;
+
     @Override
     public Ufo createUfo(String type) {
         Ufo ufo = null;
-        KomponentenFabrik komponentenFabrik = new PredatorKomponentenFabrik();
 
         switch (type) {
             case "sternenkreuzer" :

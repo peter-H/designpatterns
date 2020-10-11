@@ -6,12 +6,11 @@ import aliensimulator.aliens.*;
 import aliensimulator.predators.Predator;
 import aliensimulator.predators.PredatorFactory;
 import aliensimulator.predators.Yautja;
-import aliensimulator.ufos.AlienUfoFactory;
-import aliensimulator.ufos.PredatorUfoFactory;
-import aliensimulator.ufos.Ufo;
-import aliensimulator.ufos.UfoFactory;
+import aliensimulator.ufos.*;
 import aliensimulator.verhalten.ErdeFreundlichBesuchen;
 import aliensimulator.verhalten.ErdeNeutralAdapter;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 public class AlienSimulator {
 	
@@ -62,13 +61,15 @@ public class AlienSimulator {
 		yautja.fliegen();
 		yautja.erdeBesuchen();
 
-		UfoFactory alienUfoFactory = new AlienUfoFactory();
+		Injector i = Guice.createInjector(new KomponentenModul());
+
+		UfoFactory alienUfoFactory = i.getInstance(AlienUfoFactory.class);
 		Ufo alienSternenkreuzer = alienUfoFactory.createUfo("sternenkreuzer");
 		System.out.println(alienSternenkreuzer);
 		Ufo alienTransportschiff = alienUfoFactory.createUfo("transportschiff");
 		System.out.println(alienTransportschiff);
 
-		UfoFactory predatorUfoFactory = new PredatorUfoFactory();
+		UfoFactory predatorUfoFactory = i.getInstance(PredatorUfoFactory.class);
 		Ufo predatorSternenkreuzer = predatorUfoFactory.createUfo("sternenkreuzer");
 		System.out.println(predatorSternenkreuzer);
 		Ufo predatorTransportschiff = predatorUfoFactory.createUfo("transportschiff");
