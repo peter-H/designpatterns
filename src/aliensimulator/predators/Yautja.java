@@ -5,6 +5,10 @@ import aliensimulator.verhalten.ErdeZerstoererischAdapter;
 
 public class Yautja extends Predator {
 
+	static {
+		PredatorRegistry.register(new Yautja());
+	}
+
 	public Yautja() {
 		this.setErdeBesuchverhalten(new ErdeZerstoererischAdapter());
 	}
@@ -14,4 +18,8 @@ public class Yautja extends Predator {
 		System.out.println("Ich bin ein Yautja.");
 	}
 
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("yautja");
+	}
 }

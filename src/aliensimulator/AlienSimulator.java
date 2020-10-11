@@ -16,6 +16,13 @@ import aliensimulator.verhalten.ErdeNeutralAdapter;
 public class AlienSimulator {
 	
 	public static void main(String[] args) {
+		try {
+			Class.forName("aliensimulator.predators.HishQuTen");
+			Class.forName("aliensimulator.predators.Yautja");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		AlienFactory alienFactory = new AlienFactory();
 
 		Alien alienMars = alienFactory.createAlien("mars");

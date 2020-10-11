@@ -5,6 +5,10 @@ import aliensimulator.verhalten.ErdeNeutralAdapter;
 
 public class HishQuTen extends Predator {
 
+	static {
+		PredatorRegistry.register(new HishQuTen());
+	}
+
 	public HishQuTen() {
 		this.setErdeBesuchverhalten(new ErdeNeutralAdapter(new NeutralBesuchen()));
 	}
@@ -14,4 +18,8 @@ public class HishQuTen extends Predator {
 		System.out.println("Ich bin ein Hish-Qu-Ten.");
 	}
 
+	@Override
+	public Boolean canHandle(String type) {
+		return type.equalsIgnoreCase("hishquten");
+	}
 }
