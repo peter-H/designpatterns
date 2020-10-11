@@ -6,6 +6,10 @@ import aliensimulator.aliens.*;
 import aliensimulator.predators.Predator;
 import aliensimulator.predators.PredatorFactory;
 import aliensimulator.predators.Yautja;
+import aliensimulator.ufos.AlienUfoFactory;
+import aliensimulator.ufos.PredatorUfoFactory;
+import aliensimulator.ufos.Ufo;
+import aliensimulator.ufos.UfoFactory;
 import aliensimulator.verhalten.ErdeFreundlichBesuchen;
 import aliensimulator.verhalten.ErdeNeutralAdapter;
 
@@ -51,5 +55,16 @@ public class AlienSimulator {
 		yautja.fliegen();
 		yautja.erdeBesuchen();
 
+		UfoFactory alienUfoFactory = new AlienUfoFactory();
+		Ufo alienSternenkreuzer = alienUfoFactory.createUfo("sternenkreuzer");
+		System.out.println(alienSternenkreuzer);
+		Ufo alienTransportschiff = alienUfoFactory.createUfo("transportschiff");
+		System.out.println(alienTransportschiff);
+
+		UfoFactory predatorUfoFactory = new PredatorUfoFactory();
+		Ufo predatorSternenkreuzer = predatorUfoFactory.createUfo("sternenkreuzer");
+		System.out.println(predatorSternenkreuzer);
+		Ufo predatorTransportschiff = predatorUfoFactory.createUfo("transportschiff");
+		System.out.println(predatorTransportschiff);
 	}
 }
