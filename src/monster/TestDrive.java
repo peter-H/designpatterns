@@ -1,5 +1,7 @@
 package monster;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import gegenstaende.Hexenmaske;
 
 public class TestDrive {
@@ -86,6 +88,44 @@ public class TestDrive {
 //		testMonster.hexeGehtEreignis();
 //		System.out.println();
 
-		
+/*
+		System.out.println("Konfigurierbare Fabrik");
+		MonsterfabrikKonfigurierbar konfFabrik = new MonsterfabrikKonfigurierbar();
+		Monster monster1 = konfFabrik.createMonster("Drache");
+		monster1.darstellen();
+		monster1.addObserver(beobachter);
+		monster1.kommunizieren();
+		System.out.println();
+
+		System.out.println("Registratur");
+		try {
+			Class.forName("monster.monster.Sulley");
+			Class.forName("monster.monster.Mike");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		MonsterRegistriert sulley = MonsterRegistry.getMonster("Sulley");
+		if (sulley != null) {
+			sulley.darstellen();
+			sulley.addObserver(beobachter);
+			sulley.kommunizieren();
+			System.out.println();
+		} else {
+			System.out.println("Kein Handler gefunden");
+		}
+
+		System.out.println("Dependency Injection: Constructor Injection");
+		Injector i = Guice.createInjector(new SpielgeneratorModul());
+		Spielgenerator generator = i.getInstance(SpielgeneratorProvider.class).getSpielgenerator();
+		Monster monster = generator.createKreatur();
+		Gebaeude gebaeude = generator.createGebaeude();
+		Gelaende gelaende = generator.createGelaende();
+		monster.darstellen();
+		gebaeude.darstellen();
+		gelaende.darstellen();
+		System.out.println();
+*/
+
 	}
 }
