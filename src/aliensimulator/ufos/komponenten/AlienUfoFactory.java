@@ -1,12 +1,16 @@
-package aliensimulator.ufos;
+package aliensimulator.ufos.komponenten;
 
-import aliensimulator.ufos.komponenten.KomponentenFabrik;
-import aliensimulator.ufos.komponenten.PredatorKomponentenFabrik;
+import aliensimulator.ufos.Sternenkreuzer;
+import aliensimulator.ufos.Transportschiff;
+import aliensimulator.ufos.Ufo;
+import aliensimulator.ufos.UfoFactory;
 
-public class PredatorUfoFactory implements UfoFactory {
+
+public class AlienUfoFactory implements UfoFactory {
+
     private KomponentenFabrik komponentenFabrik;
 
-    public PredatorUfoFactory(KomponentenFabrik komponentenFabrik) {
+    public AlienUfoFactory(KomponentenFabrik komponentenFabrik) {
         this.komponentenFabrik = komponentenFabrik;
     }
 
@@ -17,12 +21,12 @@ public class PredatorUfoFactory implements UfoFactory {
         switch (type) {
             case "sternenkreuzer" :
                 ufo = new Sternenkreuzer(komponentenFabrik);
-                ufo.setName("Predator Sternenkreuzer");
+                ufo.setName("Alien Sternenkreuzer");
                 ufo.herstellen();
                 break;
             case "transportschiff" :
                 ufo = new Transportschiff(komponentenFabrik);
-                ufo.setName("Predator Transportschiff");
+                ufo.setName("Alien Transportschiff");
                 ufo.herstellen();
                 break;
         }

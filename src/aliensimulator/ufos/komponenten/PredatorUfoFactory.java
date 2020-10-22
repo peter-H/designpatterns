@@ -1,9 +1,13 @@
-package aliensimulator.ufos;
+package aliensimulator.ufos.komponenten;
 
-import aliensimulator.ufos.komponenten.KomponentenFabrik;
-import aliensimulator.ufos.komponenten.PredatorKomponentenFabrik;
+import aliensimulator.ufos.Sternenkreuzer;
+import aliensimulator.ufos.Transportschiff;
+import aliensimulator.ufos.Ufo;
+import aliensimulator.ufos.UfoFactory;
+
 
 public class PredatorUfoFactory implements UfoFactory {
+
     private KomponentenFabrik komponentenFabrik;
 
     public PredatorUfoFactory(KomponentenFabrik komponentenFabrik) {
